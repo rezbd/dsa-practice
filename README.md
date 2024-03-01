@@ -1,2 +1,2 @@
 # dsa-practice
-My practices of DSA
+My practices of data structure and algorithms as I learn and grow.
