@@ -51,6 +51,30 @@ int get_list_length(Node *head)
     return cnt;
 }
 
+void insert_at_head(Node *&head, int v)
+{
+    Node *newNode = new Node(v);
+    if(head==NULL)
+    {
+        head = newNode;
+        return;
+    }
+    newNode->next = head;
+    head = newNode;
+}
+
+void insert_at_position(Node *&head, int v, int p)
+{
+    Node *newNode = new Node(v);
+    Node *tmp = head;
+    for(int i=1; i<=p-1; i++)
+    {
+        tmp = tmp->next;
+    }
+    newNode->next = tmp->next;
+    tmp->next = newNode;
+}
+
 int main()
 {
     int val;
@@ -61,8 +85,6 @@ int main()
         if(val == -1) break;
         insert_at_tail(head, val);
     }
-
-    print_linked_list(head);
 
     int q;
     cin>>q;
@@ -77,7 +99,16 @@ int main()
             cout<<"Invalid"<<endl;
             continue;
         }
-        cout<<ind<<" "<<v<<endl;
+        if(ind==0)
+        {
+            insert_at_head(head, v);
+        }
+        else
+        {
+            insert_at_position(head, v, ind);
+        }
+        
+        print_linked_list(head);
     }
 
     return 0;
