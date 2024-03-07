@@ -40,7 +40,7 @@ void print_linked_list(Node *head)
     cout<<endl;
 }
 
-int get_list_length(Node *head)
+int get_length(Node *head)
 {
     int cnt=0;
     while(head != NULL)
@@ -91,10 +91,9 @@ int main()
     cout<<q<<endl;
     while(q--)
     {
-        int lnt = get_list_length(head);
         int ind, v;
         cin>>ind>>v;
-        if(ind>lnt)
+        if(ind > get_length(head))
         {
             cout<<"Invalid"<<endl;
             continue;
@@ -102,6 +101,10 @@ int main()
         if(ind==0)
         {
             insert_at_head(head, v);
+        }
+        else if(ind == get_length(head))
+        {
+            insert_at_tail(head, v);
         }
         else
         {
