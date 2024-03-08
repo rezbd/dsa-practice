@@ -14,20 +14,17 @@ class Node
     }
 };
 
-void insert_at_tail(Node *&head, int v)
+void insert_at_tail(Node *&head, Node *&tail, int v)
 {
     Node *newNode = new Node(v);
     if(head==NULL)
     {
         head = newNode;
+        tail = newNode;
         return;
     }
-    Node *tmp=head;
-    while(tmp->next != NULL)
-    {
-        tmp=tmp->next;
-    }
-    tmp->next = newNode;
+    tail->next = newNode;
+    tail = newNode;
 }
 
 void print_linked_list(Node *head)
@@ -78,12 +75,13 @@ void insert_at_position(Node *&head, int v, int p)
 int main()
 {
     int val;
-    Node *head=NULL;
+    Node *head = NULL;
+    Node *tail = NULL;
     while(true)
     {
         cin>>val;
         if(val == -1) break;
-        insert_at_tail(head, val);
+        insert_at_tail(head, tail, val);
     }
 
     int q;
@@ -104,7 +102,7 @@ int main()
         }
         else if(ind == get_length(head))
         {
-            insert_at_tail(head, v);
+            insert_at_tail(head, tail, v);
         }
         else
         {
