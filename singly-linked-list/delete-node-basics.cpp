@@ -49,6 +49,13 @@ void delete_node(Node* &head, int pos)
     delete deleteNode;
 }
 
+void delete_head(Node* &head)
+{
+    Node* delNode = head;
+    head = head->next;
+    delete delNode;
+}
+
 int main()
 {
     int val;
@@ -62,7 +69,8 @@ int main()
         insert_at_tail(head, tail, val);
     }
     print_list(head);
-    delete_node(head, 2);
+    // delete_node(head, 2);
+    delete_head(head);
     print_list(head);
     return 0;
 }
