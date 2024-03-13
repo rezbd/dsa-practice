@@ -37,6 +37,17 @@ void print_linked_list(Node* head)
     cout<<endl;
 }
 
+void selection_sort_list(Node* head)
+{
+    for(Node* i=head; i->next != NULL; i=i->next)
+    {
+        for(Node* j=i->next; j != NULL; j=j->next)
+        {
+            if(i->val > j->val) swap(i->val, j->val);
+        }
+    }
+}
+
 int main()
 {
     // in progress
@@ -49,13 +60,6 @@ int main()
         if(val == -1) break;
         insert_at_tail(head, tail, val);
     }
-    for(Node* i=head; i->next != NULL; i=i->next)
-    {
-        for(Node* j=i->next; j != NULL; j=j->next)
-        {
-            if(i->val > j->val) swap(i->val, j->val);
-        }
-    }
-
+    selection_sort_list(head);
     print_linked_list(head);
 }
