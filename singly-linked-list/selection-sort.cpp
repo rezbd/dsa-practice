@@ -10,11 +10,11 @@ class Node
         Node(int val)
         {
             this->val = val;
-            this->next = NULL
+            this->next = NULL;
         }
 };
 
-void insert_at_tail(Node* head, Node* tail, int v)
+void insert_at_tail(Node* &head, Node* &tail, int v)
 {
     Node* newNode = new Node(v);
     if(head == NULL)
@@ -47,7 +47,14 @@ int main()
     {
         cin>>val;
         if(val == -1) break;
-        insert_at_tail(head);
+        insert_at_tail(head, tail, val);
+    }
+    for(Node* i=head; i->next != NULL; i=i->next)
+    {
+        for(Node* j=i->next; j != NULL; j=j->next)
+        {
+            if(i->val > j->val) swap(i->val, j->val);
+        }
     }
 
     print_linked_list(head);
