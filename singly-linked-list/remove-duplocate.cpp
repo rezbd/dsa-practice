@@ -47,7 +47,10 @@ void remove_duplicates(Node* head)
             tmp->next = delNode->next;
             delete delNode;
         }
-        tmp = tmp->next;
+        else
+        {
+          tmp = tmp->next;
+        }
     }
 }
 
@@ -64,7 +67,7 @@ int main()
     }
     print_linked_list(head);
     remove_duplicates(head);
-    cout<<endl;
+    cout<<"after duplicates are removed:"<<endl;
     print_linked_list(head);
     return 0;
 }
