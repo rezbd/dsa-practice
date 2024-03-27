@@ -66,7 +66,6 @@ int main()
     // print_linked_list(newHead);
     while(head != NULL)
     {
-        cout<<head->val<<" "<<newHead->val<<endl;
         if(head->val != newHead->val)
         {
             cout<<"Not palindrome"<<endl;
