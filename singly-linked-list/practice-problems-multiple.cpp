@@ -84,6 +84,17 @@ void mid_node(Node *head)
     else cout<<slow->val<<endl;
 }
 
+void sort_descending_with_selection_sort(Node *head)
+{
+    for(Node* i=head; i->next!=NULL; i=i->next)
+    {
+        for(Node* j=i->next; j!=NULL; j=j->next)
+        {
+            if(i->val < j->val) swap(i->val, j->val);
+        }
+    }
+}
+
 int main()
 {
     int val;
@@ -100,7 +111,9 @@ int main()
 
     // print_linked_list(head);
     // mid_node(head);
-    find_max(head);
-    
+    // find_max(head);
+    sort_descending_with_selection_sort(head);
+    print_linked_list(head);
+
     return 0;
 }
