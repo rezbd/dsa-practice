@@ -4,16 +4,16 @@ using namespace std;
 class Node
 {
     public:
-        int val;
+        long long int val;
         Node* next;
-        Node(int val)
+        Node(long long int val)
         {
             this->val=val;
             this->next=NULL;
         }
 };
 
-void insert_at_tail(Node* &head, Node* &tail, int val)
+void insert_at_tail(Node* &head, Node* &tail, long long int val)
 {
     Node* newNode = new Node(val);
     if(head == NULL)
@@ -26,20 +26,9 @@ void insert_at_tail(Node* &head, Node* &tail, int val)
     tail = newNode;
 }
 
-void print_list(Node* head, int v)
+void search_value(Node* head, long long int v)
 {
-    while(head != NULL)
-    {
-        cout<<head->val<<" ";
-        head = head->next;
-    }
-    cout<<v<<endl;
-    cout<<endl;
-}
-
-void search_value(Node* head, int v)
-{
-    int ind=0;
+    long long int ind=0;
     
     Node* tmp = head;
     while(tmp != NULL)
@@ -47,24 +36,25 @@ void search_value(Node* head, int v)
         if(tmp->val == v) break;
         ind++;
         tmp=tmp->next;
+
+        if(tmp == NULL)
+        {
+            cout<< -1 <<endl;
+            return;
+        }
     }
-    cout<<"index: "<<ind<<endl;
-    if(tmp->next == NULL)
-    {
-        cout<<-1<<endl;
-        return;
-    }
+    
     cout<<ind<<endl;
 }
 
 
 int main()
 {
-    int x;
+    long long int x;
     cin>>x;
     while(x--)
     {
-        int val;
+        long long int val;
         Node* head = NULL;
         Node* tail = NULL;
 
@@ -74,14 +64,11 @@ int main()
             if(val == -1) break;
             insert_at_tail(head, tail, val);
         }
-        int v;
+        long long int v;
         cin>>v;
 
         search_value(head, v);
-        // print_list(head, v);
     }
 
     return 0;
 }
-
-// IN PROGRESS
